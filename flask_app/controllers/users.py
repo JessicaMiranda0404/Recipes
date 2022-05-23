@@ -1,7 +1,7 @@
 from flask import render_template,redirect,session,request, flash
 from flask_app import app
 from flask_app.models.user import User
-from flask_app.models.recipe import Recipe
+from flask_app.models.hike import Hike
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -45,7 +45,7 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-    return render_template("dashboard.html",user=User.get_by_id(data),recipes=Recipe.get_all())
+    return render_template("dashboard.html",user=User.get_by_id(data),hikes=Hike.get_all())
 
 @app.route('/logout')
 def logout():
